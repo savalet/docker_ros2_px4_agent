@@ -1,0 +1,25 @@
+services:
+  px4_agent:
+    environment:
+      - ROS_DOMAIN_ID=0
+      - XRCE_DOMAIN_ID_OVERRIDE=0
+      - RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+    build:
+      context: .
+      dockerfile: px4_agent.Dockerfile
+      args:
+        ROS_DISTRO: humble # choose ros distro
+    
+    container_name: px4_agent
+
+    volumes:
+      - .:/ros2_ws
+
+    working_dir: /ros2_ws
+
+    network_mode: "host"
+
+    devices:
+      - /dev/ttyS4:/dev/ttyS4
+
+    command: sleep infinity
