@@ -50,7 +50,7 @@ RUN git clone https://github.com/eProsima/Micro-XRCE-DDS-Agent.git  && \
 
 # ros repos
 WORKDIR /root/ros2_ws/src
-RUN git clone -b release/1.16 https://github.com/PX4/px4_msgs.git
+RUN git clone -b release/1.15 https://github.com/PX4/px4_msgs.git
 WORKDIR /root/ros2_ws
 RUN . /opt/ros/${ROS_DISTRO}/setup.sh && colcon build
 
@@ -64,4 +64,3 @@ SHELL ["/bin/bash", "-c"]
 
 # Default command
 CMD ["bash"]
-
